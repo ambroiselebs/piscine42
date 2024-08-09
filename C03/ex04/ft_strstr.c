@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-09 10:56:19 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-09 10:56:19 by aberenge         ###   ########.fr       */
+/*   Created: 2024-08-09 16:21:31 by aberenge          #+#    #+#             */
+/*   Updated: 2024-08-09 16:21:31 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,36 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int	d;
-	int	c;
+	int	i;
+	int	find;
+	int	to_find_len;
 
-	d = ft_strlen(dest);
-	c = 0;
-	while (src[c])
+	i = 0;
+	to_find_len = ft_strlen(to_find);
+	while (str[i])
 	{
-		dest[d] = src[c];
-		d++;
-		c++;
+		find = 0;
+		while (str[i] == to_find[find])
+		{
+			if (find == to_find_len)
+				return (to_find);
+			else
+			{
+				find++;
+				i++;
+			}
+		}
+		i++;
 	}
-	return (dest);
+	return (NULL);
 }
 /*
-int main() {
-    char destination[50] = "Bonjour, ";
-    char source[] = "monde!";
+int	main(void)
+{
+	char *res = ft_strstr("Bonjour monde", "monde");
+	printf("%s", res);
 
-    ft_strcat(destination, source);
-
-    printf("Chaîne destination: '%s'\n", destination);
-
-    return 0;
+	return (0);
 }*/
