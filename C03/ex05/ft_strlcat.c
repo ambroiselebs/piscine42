@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-09 10:56:19 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-09 10:56:19 by aberenge         ###   ########.fr       */
+/*   Created: 2024-08-09 16:33:33 by aberenge          #+#    #+#             */
+/*   Updated: 2024-08-09 16:33:33 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,17 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strcat(char *dest, char *src)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int	d;
-	int	c;
+	unsigned int	d;
+	unsigned int	c;
+	unsigned int	src_len;
 
 	d = ft_strlen(dest);
+	src_len = ft_strlen(src);
 	c = 0;
+	if (size <= src_len)
+		return (src_len +  size);
 	while (src[c])
 	{
 		dest[d] = src[c];
@@ -36,16 +40,5 @@ char	*ft_strcat(char *dest, char *src)
 		c++;
 	}
 	dest[d] = '\0';
-	return (dest);
+	return (d - src_len);
 }
-/*
-int main() {
-    char destination[50] = "Bonjour, ";
-    char source[] = "monde!";
-
-    ft_strcat(destination, source);
-
-    printf("Chaîne destination: '%s'\n", destination);
-
-    return 0;
-}*/

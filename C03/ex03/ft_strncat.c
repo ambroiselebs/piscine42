@@ -35,14 +35,15 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 		d++;
 		c++;
 	}
+	dest[d] = '\0';
 	return (dest);
 }
 /*
 int main() {
-    char destination[50] = "Bonjour, ";
-    char source[] = "monde!";
+    char destination[50] = "Hello";
+    char source[] = "World";
 
-    ft_strncat(destination, source, 3);
+    ft_strncat(destination, source, 10);
 
     printf("Chaîne destination: '%s'\n", destination);
 
