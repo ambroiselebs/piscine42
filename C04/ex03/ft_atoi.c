@@ -49,10 +49,10 @@ int	parse_str(char *str, char *new)
 
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
-	char	new[ft_strlen(str)];
+	char	new[11];
+	int		i;
+	int		sign;
+	int		res;
 
 	sign = parse_str(str, new);
 	i = 0;
@@ -67,10 +67,10 @@ int	ft_atoi(char *str)
 	return (res);
 }
 
-int main(void)
+/* int main(void)
 {
 	int res = ft_atoi("-1234ab567");
 	printf("%d", res);
 
 	return (0);
-}
+} */
