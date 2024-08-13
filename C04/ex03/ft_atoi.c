@@ -3,74 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-10 09:38:48 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-10 09:38:48 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/10 09:38:48 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/13 17:30:25 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_strlen(char *str)
+int	choose_sign(char *str)
 {
 	int	i;
+	int	opp;
 
 	i = 0;
-	while (str[i])
+	opp = 0;
+	while (str[i] && !(str[i] >= '0' && str[i] <= '9'))
+	{
+		if (str[i] == '-')
+			opp--;
+		if (str[i] == '+')
+			opp++;
 		i++;
-	return (i);
+	}
+	return (opp);
 }
 
-int	parse_str(char *str, char *new)
+void	parse_int(char *str, char *res)
 {
 	int	i;
 	int	j;
-	int	res;
 
 	i = 0;
 	j = 0;
-	res = 0;
 	while (str[i])
 	{
-		if (str[i] == '+')
-			res++;
-		if (str[i] == '-')
-			res--;
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			new[j] = str[i];
+			res[j] = str[i];
 			j++;
 		}
 		i++;
 	}
-	return (res);
+	res[j] = '\0';
 }
 
 int	ft_atoi(char *str)
 {
-	char	new[11];
+	char	new[128];
+	int		opp;
+	int		nb;
 	int		i;
-	int		sign;
-	int		res;
 
-	sign = parse_str(str, new);
+	parse_int(str, new);
+	opp = choose_sign(str);
 	i = 0;
-	res = 0;
+	nb = 0;
 	while (new[i])
 	{
-		res = res * 10 + (new[i] - '0');
+		nb = nb * 10 + (new[i] - '0');
 		i++;
 	}
-	if (sign < 0)
-		res = -res;
-	return (res);
+	if (opp < 0)
+		nb = -nb;
+	return (nb);
 }
-
-/* int main(void)
+/*
+int main(void)
 {
-	int res = ft_atoi("-1234ab567");
+	int res = ft_atoi("caca12-///6du28");
 	printf("%d", res);
 
 	return (0);
-} */
+}*/
