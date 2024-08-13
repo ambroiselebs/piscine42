@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 16:21:31 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/13 09:54:23 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/13 09:35:43 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/13 09:54:37 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #define NULL ((void*)0)
 
-char	*ft_strstr(char *str, char *to_find)
+int	*ft_range(int min, int max)
 {
+	int	*res;
 	int	i;
 	int	j;
 
-	i = 0;
-	if (!to_find[0])
+	if (min >= max)
 		return (NULL);
-	while (str[i])
+	res = (int *) malloc((max - min) * sizeof(int));
+	i = min;
+	j = 0;
+	while (i < max)
 	{
-		j = 0;
-		while (str[i + j] == to_find[j])
-		{
-			if (to_find[j])
-				return (&str[i]);
-			j++;
-		}
+		res[j] = i;
 		i++;
+		j++;
 	}
-	return (NULL);
+	return (res);
 }
 /*
 int	main(void)
 {
-	char *res = ft_strstr("Hello world blablabla", "world");
-	char *vrai = strstr("Hello world blablabla", "world");
-	printf("Custom : %s\n", res);
-	printf("Vrai : %s", vrai);
-
+	int	i = 0;
+	int *res = ft_range(0, 128);
+	while (i <= 128)
+	{
+		printf("%i, ", res[i]);
+		i++;
+	}
 	return (0);
 }*/

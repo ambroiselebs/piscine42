@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 10:27:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/08 10:37:10 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/13 10:29:54 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i + 1] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }
 /*

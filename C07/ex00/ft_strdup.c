@@ -1,47 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 16:21:31 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/13 09:54:23 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/13 08:38:56 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/13 09:48:34 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#define NULL ((void*)0)
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_strlen(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	if (!to_find[0])
-		return (NULL);
 	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *src)
+{
+	char	*copy;
+	int		i;
+	int		src_len;
+
+	src_len = ft_strlen(src);
+	copy = (char *) malloc(src_len * sizeof(char));
+	i = 0;
+	while (src[i])
 	{
-		j = 0;
-		while (str[i + j] == to_find[j])
-		{
-			if (to_find[j])
-				return (&str[i]);
-			j++;
-		}
+		copy[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	return (copy);
 }
 /*
 int	main(void)
 {
-	char *res = ft_strstr("Hello world blablabla", "world");
-	char *vrai = strstr("Hello world blablabla", "world");
-	printf("Custom : %s\n", res);
-	printf("Vrai : %s", vrai);
-
+	char *res = ft_strdup("Hello world");
+	printf("%s", res);
 	return (0);
 }*/
