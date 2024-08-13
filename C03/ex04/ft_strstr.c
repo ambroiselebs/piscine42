@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-09 16:21:31 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-09 16:21:31 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/09 16:21:31 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/13 08:25:38 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,21 @@ int	ft_strlen(char *str)
 char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
-	int	find;
-	int	to_find_len;
+	int	j;
 
 	i = 0;
-	to_find_len = ft_strlen(to_find);
+	j = 0;
+	if (!to_find[0])
+		return (str);
 	while (str[i])
 	{
-		find = 0;
-		while (str[i] == to_find[find])
+		while (str[i + j] == to_find[j])
 		{
-			if (find == to_find_len)
-				return (to_find);
-			else
-			{
-				find++;
-				i++;
-			}
+			if (to_find[j + 1])
+				return (&str[i]);
+			j++;
 		}
+		j = 0;
 		i++;
 	}
 	return (NULL);
@@ -50,7 +47,7 @@ char	*ft_strstr(char *str, char *to_find)
 /*
 int	main(void)
 {
-	char *res = ft_strstr("Bonjour monde", "monde");
+	char *res = ft_strstr("Bonjour", "monde");
 	printf("%s", res);
 
 	return (0);
