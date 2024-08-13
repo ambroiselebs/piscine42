@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-09 16:56:18 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-09 16:56:18 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/09 16:56:18 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/13 14:50:32 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	ft_putnbr(int nb)
 	}
 	print_number(final, i);
 }
-/*
+
 int	main(void)
 {
 	ft_putnbr(-42);
 
 	return (0);
-}*/
+}
