@@ -11,8 +11,25 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
+	int	*res;
+	int	i;
 
+	if (min >= max)
+	{
+		*range = NULL;
+		return (0);
+	}
+	res = (int *) malloc((max - min) * sizeof(int));
+	i = 0;
+	while (i < (max - min))
+	{
+		res[i] = min + i;
+		i++;
+	}
+	*range = res;
+	return (max - min);
 }
