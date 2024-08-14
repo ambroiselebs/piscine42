@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 09:38:48 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/14 09:29:49 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/14 12:49:18 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	parse_int(char *str, char *res)
 
 int	ft_atoi(char *str)
 {
-	char	new[128];
+	char	*new;
 	int		opp;
 	int		nb;
 	int		i;

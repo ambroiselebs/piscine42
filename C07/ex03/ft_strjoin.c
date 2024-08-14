@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 09:55:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/14 10:52:57 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:21:44 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ int	get_size(char **strs, int size)
 	return (total);
 }
 
-void	mettre_a_z(int *i, int *j, int *k)
-{
-	*i = 0;
-	*j = 0;
-	*k = 0;
-}
-
 void	mettre_sep(char *sep, char *res, int *k)
 {
 	int	j;
@@ -63,7 +56,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		k;
 
 	res = (char *) malloc(get_size(strs, size) * sizeof(char));
-	mettre_a_z(&i, &j, &k);
+	i = 0;
+	j = 0;
+	k = 0;
 	while (i < size)
 	{
 		while (strs[i][j])
