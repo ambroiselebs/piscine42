@@ -12,73 +12,36 @@
 
 #include <stdio.h>
 
-int	check_alphabet(char c)
+int	skipable(char c)
 {
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
+	if (c == ' ')
 		return (1);
 	return (0);
 }
 
-int	choose_sign(char *str)
+int	ft_atoi(const char *str)
 {
+	int	nb;
 	int	i;
-	int	opp;
+	int	sign;
 
-	i = 0;
-	opp = 1;
-	while (str[i] && !(str[i] >= '0' && str[i] <= '9'))
-	{
-		if (str[i] == '-')
-			opp *= -1;
-		i++;
-	}
-	return (opp);
-}
-
-void	parse_int(char *str, char *res)
-{
-	int	i;
-	int	j;
-	int	found;
-
-	i = 0;
-	j = 0;
-	found = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			res[j] = str[i];
-			j++;
-			found = 1;
-		}
-		if (check_alphabet(str[i]))
-			break ;
-		if (found && str[i] == ' ')
-			break ;
-		i++;
-	}
-	res[j] = '\0';
-}
-
-int	ft_atoi(char *str)
-{
-	char	*new;
-	int		opp;
-	int		nb;
-	int		i;
-
-	parse_int(str, new);
-	opp = choose_sign(str);
 	i = 0;
 	nb = 0;
-	while (new[i])
+	sign = 1;
+	while (skipable(str[i]))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		nb = nb * 10 + (new[i] - '0');
+		if (str[i] == '-')
+			sign = sign * -1;
 		i++;
 	}
-	return (nb * opp);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
+		i++;
+	}
+	return (nb * sign);
 }
 /*
 int main(void)
