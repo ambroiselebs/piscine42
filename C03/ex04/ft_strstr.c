@@ -9,39 +9,35 @@
 /*   Updated: 2024/08/13 12:29:55 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 #include <string.h>
-//#define NULL ((void*)0)
+#include <stdio.h>
 
 char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	if (!to_find[0])
-		return (0);
-	while (str[i])
+	if (!*to_find)
+		return (str);
+	while (*str)
 	{
-		j = 0;
-		while (str[i + j] == to_find[j])
+		if (*str == *to_find)
 		{
-			if (to_find[j] && j > 0)
-				return (&str[i]);
-			j++;
+			i = 1;
+			while (to_find[i] && str[i] == to_find[i])
+				i++;
+			if (!to_find[i])
+				return (str);
 		}
-		i++;
+		str++;
 	}
 	return (0);
 }
 /*
 int	main(void)
 {
-	char *res = ft_strstr("Bonjour je m'appelle", "je");
-	char *vrai = strstr("Bonjour je m'appelle", "je");
-	printf("Custom : %s\n", res);
-	printf("Vrai : %s\n", vrai);
+	char s1[] = "fnxibwqixbwqbx rararaspoutine ceipiwbpcwb";
+	char s2[] = "raraspoutine";
 
-	return (0);
-}*/
+	printf("%s:%s\n", ft_strstr(s1, s2), strstr(s1, s2));
+}
+*/
