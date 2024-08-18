@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial,c                           :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-10 12:24:17 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-10 12:24:17 by aberenge         ###   ########.fr       */
+/*   Created: 2024-08-18 19:49:40 by aberenge          #+#    #+#             */
+/*   Updated: 2024-08-18 19:49:40 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_recursive_factorial(int nb)
+int	ft_is_prime(int nb)
 {
-	if (nb < 0)
+	int	i;
+
+	i = 2;
+	if (nb < 2)
 		return (0);
-	else if (nb == 0)
-		return (1);
-	else if (nb == 1)
-		return (nb);
-	return (nb * ft_recursive_factorial(nb - 1));
+	while (i < nb)
+	{
+		if (nb % i == 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-/* int main(void)
+int	ft_find_next_prime(int	nb)
 {
-	int res = ft_recursive_factorial(5);
-	printf("%d", res);
+	int	i;
 
-	return (0);
-} */
+	i = nb;
+	while (!ft_is_prime(i))
+		i++;
+	return (i);
+}
