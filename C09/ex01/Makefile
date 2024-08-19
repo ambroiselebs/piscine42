@@ -17,13 +17,13 @@ all:	${LIB}
 ${LIB}: ${OBJS}
 			ar rcs ${LIB} ${OBJS}
 
-.c.o:
+compile:
 			${CC} ${CFLAGS} -I ${INCFOLDER} -c $< -o $@
 
 clean:
 			rm -f ${OBJS}
 
-fclean: clean
+libclean: clean
 			rm -f ${LIB}
 
 re: fclean all

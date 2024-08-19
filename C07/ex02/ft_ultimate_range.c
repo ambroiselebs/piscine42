@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 12:31:17 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/19 09:59:49 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:29:27 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	*range = res;
 	return (max - min);
 }
-
+/*
 int	main(void)
 {
 	int	*range;
@@ -49,4 +49,4 @@ int	main(void)
 	}
 	free(range);
 	return (0);
-}
+}*/
