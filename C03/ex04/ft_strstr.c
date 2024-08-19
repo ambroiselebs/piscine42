@@ -6,10 +6,10 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 16:21:31 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/13 12:29:55 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:18:39 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <string.h>
+
 #include <stdio.h>
 
 char	*ft_strstr(char *str, char *to_find)

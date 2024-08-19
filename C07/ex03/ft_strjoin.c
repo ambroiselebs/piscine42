@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 09:55:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/19 13:31:51 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:26:02 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ int	get_size(char **strs, int size)
 		i++;
 	}
 	return (total);
+}
+
+int get_sep_size(char *sep)
+{
+	int	i;
+
+	i = 0;
+	while (sep[i])
+		i++;
+	return (i);
 }
 
 void	mettre_sep(char *sep, char *res, int *k)
@@ -64,7 +74,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	if (size <= 0)
 		res = "";
-	res = (char *) malloc(get_size(strs, size) * sizeof(char));
+	res = (char *) malloc((get_size(strs, size) * get_sep_size(sep)) * sizeof(char));
 	mettre_a_z(&i, &j, &k);
 	while (i < size && size > 0)
 	{
@@ -82,16 +92,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (res);
 }
 
-/*
 int	main(void)
 {
-	char	*strs[] = {"Hello", "world"};
+	char	*strs[] = {"Hello", "world", "world", "world", "world", "world", "world", "world"};
 	char	*sep = " | ";
 	char	*res;
 
-	res = ft_strjoin(2, strs, sep);
+	res = ft_strjoin(7, strs, sep);
 	printf("%s", res);
 	free(res);
 
 	return (0);
-}*/
+}

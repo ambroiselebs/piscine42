@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 08:42:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/14 13:00:00 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/19 13:43:46 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	ft_is_prime(int nb)
 	}
 	return (1);
 }
-/*
+
 int main(void)
 {
-	printf("%d\n", ft_is_prime(27));
-	printf("%d\n", ft_is_prime(29));
-	printf("%d\n", ft_is_prime(6));
+	printf("%d\n", ft_is_prime(4));
+	//printf("%d\n", ft_is_prime(29));
+	//printf("%d\n", ft_is_prime(6));
 	return (0);
-}*/
+}
