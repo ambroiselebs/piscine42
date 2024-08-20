@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 12:21:12 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/20 11:58:03 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/20 12:07:38 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/20 12:49:21 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+#ifndef FT_STOCK_STR_H
+#define FT_STOCK_STR_H
 
-# define ABS(n) (n + (n >> 31)) ^ (n >> 31)
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+typedef struct s_stock_str
+{
+	int size;
+	char *str;
+	char *copy;
+} t_stock_str;
 
 #endif
