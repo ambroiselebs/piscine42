@@ -6,15 +6,13 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:21:12 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/19 13:46:39 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:15:37 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
 
-# define ABS(value) ({ \
-		if (value < 0) value = -value; \
-		value;})
+# define ABS(n) (n + (n >> 31)) ^ (n >> 31)
 
 #endif
