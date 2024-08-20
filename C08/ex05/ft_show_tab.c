@@ -6,11 +6,14 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:44:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/20 13:04:18 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:19:17 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
 void	print_number(char *str, int size)
 {

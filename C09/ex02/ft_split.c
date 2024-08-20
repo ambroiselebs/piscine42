@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:00:50 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/20 11:01:44 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/20 16:00:06 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,42 +24,54 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_split(char *str, char *charset)
+char	**ft_split(char *str, char *charset)
 {
 	char	**res;
-	int		str_i;
-	int		charset_i;
-	int		to_copy;
-	int		last_found;
+	int	str_i;
+	int	charset_i;
+	int	res_i;
+	int	res_str_i;
+	int	prev_i;
 
 	str_i = 0;
-	to_copy = 0;
-	last_found = 0;
+	res_i = 0;
+	res_str_i = 0;
+	prev_i = 0;
+	res = (char **) malloc((ft_strlen(str)) + 1 * sizeof(char));
 	while (str[str_i])
 	{
 		charset_i = 0;
-		while (str[str_i] == charset[charset_i] && charset[charset_i])
+		while (str[str_i] == charset[charset_i])
 		{
 			str_i++;
 			charset_i++;
-		}
-
-		if (charset[charset_i] == '\0')
-		{
-			to_copy = str_i - ft_strlen(charset) - 1;
-			while (last_found <= to_copy)
+			if (charset[charset_i] == '\0' && str_i > ft_strlen(charset))
 			{
-				printf("%c\n", str[to_copy]);
-				to_copy--;
+				res_i++;
+				res_str_i = 0;
+				prev_i = str_i;
+				printf("\n");
 			}
-			last_found = str_i;
 		}
+		res[res_i] = (char *) malloc((str_i - prev_i) * sizeof(char));
+		res[res_i][res_str_i] = str[str_i];
+		res[res_i][res_str_i + 1] = '\0';
+		printf("%c", res[res_i][res_str_i]);
+		res_str_i++;
 		str_i++;
 	}
+	return (res);
 }
-
 int	main(void)
 {
-	ft_split("test0ndwadad0n", "0n");
+	char	**result;
+	result = ft_split("Le plus beau SHREK il est parfait", "SHREK");
+	int	i = 0;
+	while (result[i] != 0)
+	{
+		printf("%s", result[i]);
+		i++;
+	}
+	free(result);
 	return (0);
 }

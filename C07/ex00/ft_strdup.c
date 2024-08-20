@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 08:38:56 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/19 13:29:37 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/20 14:54:17 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int	main(void)
 {
 	char *res = ft_strdup("Hello world");
 	printf("%s", res);
+	free(res);
 	return (0);
 }*/
