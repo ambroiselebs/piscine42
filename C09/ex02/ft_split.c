@@ -46,8 +46,8 @@ void	ft_split(char *str, char *charset)
 
 		if (charset[charset_i] == '\0')
 		{
-			to_copy = str_i - ft_strlen(charset);
-			while (to_copy >= last_found)
+			to_copy = str_i - ft_strlen(charset) - 1;
+			while (last_found <= to_copy)
 			{
 				printf("%c\n", str[to_copy]);
 				to_copy--;
@@ -60,6 +60,6 @@ void	ft_split(char *str, char *charset)
 
 int	main(void)
 {
-	ft_split("test 0n dwadad 0n", "0n");
+	ft_split("test0ndwadad0n", "0n");
 	return (0);
 }
