@@ -1,50 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   display_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 08:38:56 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/21 18:30:12 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/21 17:24:58 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/21 17:42:43 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <fcntl.h>
 #include <stdlib.h>
-#include <stdio.h>
 
-int	ft_strlen(char *str)
+int	main(int argc, char **argv)
 {
-	int	i;
+	char	data[1024];
+	ssize_t	bytes_read;
+	int		file;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	char	*copy;
-	int		i;
-	int		src_len;
-
-	src_len = ft_strlen(src);
-	copy = (char *) malloc(src_len * sizeof(char));
-	i = 0;
-	while (src[i])
+	file = open(argv[1], O_RDONLY);
+	bytes_read = read(file, data, 1024);
+	while (bytes_read > 0)
 	{
-		copy[i] = src[i];
-		i++;
+		write(STDOUT_FILENO, data, bytes_read);
+		bytes_read--;
 	}
-	copy[i] = '\0';
-	return (copy);
-}
-/*
-int	main(void)
-{
-	char *res = ft_strdup("Hello world");
-	printf("%s", res);
-	free(res);
+	close(file);
 	return (0);
-}*/
+}

@@ -1,50 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 08:38:56 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/21 18:30:12 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/21 18:10:41 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/21 18:32:09 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
 
-int	ft_strlen(char *str)
+int	test_func(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
-		i++;
-	return (i);
+	{
+		if (str[i] == 'z')
+			return (1);
+		else
+			i++;
+	}
+	return (0);
 }
 
-char	*ft_strdup(char *src)
+int	ft_any(char **tab, int (*f)(char*))
 {
-	char	*copy;
-	int		i;
-	int		src_len;
+	int	i;
 
-	src_len = ft_strlen(src);
-	copy = (char *) malloc(src_len * sizeof(char));
 	i = 0;
-	while (src[i])
+	while (tab[i])
 	{
-		copy[i] = src[i];
+		if (f(tab[i]) != 0)
+			return (1);
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
-}
-/*
-int	main(void)
-{
-	char *res = ft_strdup("Hello world");
-	printf("%s", res);
-	free(res);
 	return (0);
-}*/
+}
+
+/* int	main(void)
+{
+	char	*test[] = {"hello", "world", NULL};
+	printf("%d", ft_any(test, &test_func));
+	return (0);
+} */
