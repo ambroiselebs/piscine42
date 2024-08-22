@@ -6,11 +6,13 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:07:16 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/20 13:01:36 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:22:44 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 int	ft_strlen(char *str)
 {

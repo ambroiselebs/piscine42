@@ -23,7 +23,7 @@ compile:
 clean:
 			rm -f ${OBJS}
 
-libclean: clean
+fclean: clean
 			rm -f ${LIB}
 
 re: fclean all

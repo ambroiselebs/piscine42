@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:25:16 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/21 13:13:01 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/22 11:53:20 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_charset(char c, char *charset)
 }
 /**
 Fonction pour calculer la taille requise pour le malloc
-(toutes str - (charset * x))
+(toutes str + (charset * x))
 */
 
 int	ft_len(char *str, char *charset)
