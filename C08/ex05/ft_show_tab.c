@@ -6,13 +6,12 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:44:21 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/20 16:19:17 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/22 10:32:24 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include <unistd.h>
 
 void	print_number(char *str, int size)
@@ -30,11 +29,14 @@ void	ft_putnbr(int nb)
 	int		i;
 
 	if (nb == 0)
+	{
 		write(1, "0", 1);
+		return;
+	}
 	if (nb == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return ;
+		return;
 	}
 	if (nb < 0)
 	{
