@@ -6,124 +6,89 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 12:25:16 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/22 11:53:20 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:17:03 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int	is_charset(char c, char *charset)
+int	is_sep(char c, char *charset)
 {
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == c)
+	while (*charset)
+		if (c == *charset++)
 			return (1);
-		i++;
-	}
 	return (0);
 }
-/**
-Fonction pour calculer la taille requise pour le malloc
-(toutes str + (charset * x))
-*/
 
-int	ft_len(char *str, char *charset)
+int	count_words(char *str, char *charset)
 {
-	int	i;
-	int	len;
+	int	count;
 
-	len = 0;
-	i = 0;
-	while (str[i])
+	count = 0;
+	while (*str)
 	{
-		if (str[i] && !is_charset(str[i], charset))
-			len++;
-		while (str[i] && !is_charset(str[i], charset))
-			i++;
-		i++;
+		while (*str && is_sep(*str, charset))
+			str++;
+		if (*str)
+			count++;
+		while (*str && !is_sep(*str, charset))
+			str++;
 	}
-	return (len);
-}
-/**
-Fonction pour calculer la taille d'une chaine de caractere
-hors charset (seulement une avant arriver charset)
-*/
-
-int	ft_word_len(char *str, char *charset)
-{
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
-	while (str[i] && !is_charset(str[i], charset))
-	{
-		len++;
-		i++;
-	}
-	return (len);
+	return (count);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+char	*malloc_word(char *str, char *charset)
 {
-	unsigned int	i;
-	unsigned int	len;
+	int		len;
+	char	*word;
 
 	len = 0;
-	while (src[len])
+	while (str[len] && !is_sep(str[len], charset))
 		len++;
-	if (size == 0)
-		return (len);
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (len);
+	word = (char *)malloc(sizeof(char) * (len + 1));
+	if (!word)
+		return (NULL);
+	word[len] = '\0';
+	while (len--)
+		word[len] = str[len];
+	return (word);
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char	**strs;
-	int		len;
 	int		i;
-	int		j;
+	int		words;
+	char	**tab;
 
-	strs = (char **)malloc((ft_len(str, charset) + 1) * sizeof(char));
-	if (!strs)
-		return (0);
 	i = 0;
-	j = 0;
-	while (str[i])
+	words = count_words(str, charset);
+	tab = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!tab)
+		return (NULL);
+	while (*str)
 	{
-		while (is_charset(str[i], charset))
-			++i;
-		len = ft_word_len(str + i, charset);
-		strs[j] = (char *)malloc((len + 1) * sizeof(char));
-		if (!strs[j])
-			return (0);
-		ft_strlcpy(strs[j++], &str[i], len + 1);
-		i += len;
+		while (*str && is_sep(*str, charset))
+			str++;
+		if (*str)
+		{
+			tab[i++] = malloc_word(str, charset);
+			while (*str && !is_sep(*str, charset))
+				str++;
+		}
 	}
-	strs[j] = 0;
-	return (strs);
+	tab[i] = 0;
+	return (tab);
 }
-
-/* int	main(void)
-{
-	char	**res = ft_split("c'est le plus beau SHREK il est parfait", "SHREK");
+/*
+int	main(void) {
+	char **res = ft_split("Hello,,World!This is a test.", ", !.");
 	int	i = 0;
 	while (res[i])
-	{
-		printf("%s\n", res[i]);
-		i++;
-	}
+		printf("%s\n", res[i++]);
+	i = 0;
+	while (res[i])
+		free(res[i++]);
 	free(res);
 	return (0);
-} */
+}*/
