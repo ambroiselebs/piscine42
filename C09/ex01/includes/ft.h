@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tobesnar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 12:07:38 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/26 09:01:52 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/21 15:12:35 by tobesnar          #+#    #+#             */
+/*   Updated: 2024/08/21 15:12:37 by tobesnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#pragma once
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
-
-typedef struct s_stock_str
-{
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
-
-#endif
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);

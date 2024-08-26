@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tobesnar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 12:07:38 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/26 09:01:52 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/07 14:09:26 by tobesnar          #+#    #+#             */
+/*   Updated: 2024/08/25 13:38:04 by tobesnar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
-
-typedef struct s_stock_str
+void	ft_swap(int *a, int *b)
 {
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
+	int	tmp;
 
-#endif
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
