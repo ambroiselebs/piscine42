@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-25 08:28:10 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-25 08:28:10 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/25 08:28:10 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/26 17:42:19 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doop.h"
+
+void	print_numbers(int *i, char *res)
+{
+	(*i)--;
+	while (*i >= 0)
+	{
+		write(1, &res[*i], 1);
+		(*i)--;
+	}
+}
 
 void	ft_putnbr(int nb)
 {
@@ -19,8 +29,15 @@ void	ft_putnbr(int nb)
 
 	i = 0;
 	if (nb == 0)
-	{
 		write(1, "0", 1);
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb < -2147483647)
+	{
+		write(1, "-2147483647", 11);
 		return ;
 	}
 	while (nb > 0)
@@ -29,12 +46,7 @@ void	ft_putnbr(int nb)
 		nb = nb / 10;
 		i++;
 	}
-	i--;
-	while (i >= 0)
-	{
-		write(1, &res[i], 1);
-		i--;
-	}
+	print_numbers(&i, res);
 }
 
 int	ft_atoi(char	*str)
