@@ -6,11 +6,12 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 08:28:10 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/26 17:42:19 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/27 10:39:45 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doop.h"
+#include <stdlib.h>
 
 void	print_numbers(int *i, char *res)
 {
@@ -60,7 +61,7 @@ int	ft_atoi(char	*str)
 	nb = 0;
 	while (str[i] == ' ')
 		i++;
-	while (str[i] == '-' && str[i] == '+')
+	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = sign * -1;
@@ -89,8 +90,8 @@ int	main(int argc, char **argv)
 	opps[(unsigned char) '%'] = modulo;
 	if (opps[(unsigned char) argv[2][0]])
 	{
-		nba = ft_atoi(&argv[1][0]);
-		nbb = ft_atoi(&argv[3][0]);
+		nba = ft_atoi(argv[1]);
+		nbb = ft_atoi(argv[3]);
 		ft_putnbr(opps[(unsigned char) argv[2][0]](nba, nbb));
 	}
 	else
