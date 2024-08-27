@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 08:28:10 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/27 10:39:45 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/27 16:57:33 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	ft_atoi(char	*str)
 int	main(int argc, char **argv)
 {
 	t_opptab	opps[128];
-	int			nba;
 	int			nbb;
 
 	if (argc != 4)
@@ -90,11 +89,16 @@ int	main(int argc, char **argv)
 	opps[(unsigned char) '%'] = modulo;
 	if (opps[(unsigned char) argv[2][0]])
 	{
-		nba = ft_atoi(argv[1]);
 		nbb = ft_atoi(argv[3]);
-		ft_putnbr(opps[(unsigned char) argv[2][0]](nba, nbb));
+		if (nbb == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
+		{
+			if (argv[2][0] == '/')
+				write(1, "Stop : division by zero", 23);
+			if (argv[2][0] == '%')
+				write(1, "Stop : modulo by zero", 21);
+		}
+		else
+			ft_putnbr(opps[(unsigned char) argv[2][0]](ft_atoi(argv[1]), nbb));
 	}
-	else
-		write(1, "0", 1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opp.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-25 07:44:46 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-25 07:44:46 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/25 07:44:46 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/27 16:54:42 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,13 @@ int	times(int a, int b)
 int	divide(int a, int b)
 {
 	if (b == 0)
-	{
-		write(1, "Stop : division by zero", 23);
 		return (0);
-	}
 	return (a / b);
 }
 
 int	modulo(int a, int b)
 {
 	if (b == 0)
-	{
-		write(1, "Stop : modulo by zero", 21);
 		return (0);
-	}
 	return (a % b);
 }
