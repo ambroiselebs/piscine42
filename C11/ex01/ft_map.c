@@ -6,17 +6,17 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 17:44:35 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/21 17:55:15 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:20:20 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-
+/*
 int	increment(int n)
 {
 	return (n + 1);
-}
+}*/
 
 int	*ft_map(int *tab, int length, int (*f)(int))
 {

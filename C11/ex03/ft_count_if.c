@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aberenge <marvin@42.fr>                    #+#  +:+       +#+        */
+/*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-08-21 20:38:57 by aberenge          #+#    #+#             */
-/*   Updated: 2024-08-21 20:38:57 by aberenge         ###   ########.fr       */
+/*   Created: 2024/08/21 20:38:57 by aberenge          #+#    #+#             */
+/*   Updated: 2024/08/27 13:20:06 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
+/*
 int	test_func(char *str)
 {
 	int	i;
@@ -24,7 +24,7 @@ int	test_func(char *str)
 		i++;
 	}
 	return (0);
-}
+}*/
 
 int	ft_count_if(char **tab, int length, int (*f)(char*))
 {

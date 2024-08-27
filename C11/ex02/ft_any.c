@@ -6,12 +6,12 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 18:10:41 by aberenge          #+#    #+#             */
-/*   Updated: 2024/08/21 18:32:09 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:20:13 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-
+/*
 int	test_func(char *str)
 {
 	int	i;
@@ -25,7 +25,7 @@ int	test_func(char *str)
 			i++;
 	}
 	return (0);
-}
+}*/
 
 int	ft_any(char **tab, int (*f)(char*))
 {
