@@ -30,13 +30,19 @@ int	times(int a, int b)
 int	divide(int a, int b)
 {
 	if (b == 0)
+	{
+		write(1, "Stop : division by zero", 23);
 		return (0);
+	}
 	return (a / b);
 }
 
 int	modulo(int a, int b)
 {
 	if (b == 0)
+	{
+		write(1, "Stop : modulo by zero", 21);
 		return (0);
+	}
 	return (a % b);
 }

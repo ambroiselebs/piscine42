@@ -79,6 +79,7 @@ int	main(int argc, char **argv)
 {
 	t_opptab	opps[128];
 	int			nbb;
+	int			res;
 
 	if (argc != 4)
 		return (1);
@@ -87,18 +88,14 @@ int	main(int argc, char **argv)
 	opps[(unsigned char) '*'] = times;
 	opps[(unsigned char) '/'] = divide;
 	opps[(unsigned char) '%'] = modulo;
-	if (opps[(unsigned char) argv[2][0]])
+	if (opps[(unsigned char) argv[2][0]] && !argv[2][1])
 	{
 		nbb = ft_atoi(argv[3]);
-		if (nbb == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
-		{
-			if (argv[2][0] == '/')
-				write(1, "Stop : division by zero", 23);
-			if (argv[2][0] == '%')
-				write(1, "Stop : modulo by zero", 21);
-		}
-		else
-			ft_putnbr(opps[(unsigned char) argv[2][0]](ft_atoi(argv[1]), nbb));
+		res = opps[(unsigned char) argv[2][0]](ft_atoi(argv[1]), nbb);
+		if (nbb != 0 && (argv[2][0] != '/' || argv[2][0] != '%'))
+			ft_putnbr(res);
 	}
+	else
+		write(1, "0", 1);
 	return (0);
 }
