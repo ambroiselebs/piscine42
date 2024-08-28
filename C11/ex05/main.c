@@ -75,6 +75,15 @@ int	ft_atoi(char	*str)
 	return (nb * sign);
 }
 
+void	set_opps(t_opptab *opps)
+{
+	opps[(unsigned char) '+'] = add;
+	opps[(unsigned char) '-'] = minus;
+	opps[(unsigned char) '*'] = times;
+	opps[(unsigned char) '/'] = divide;
+	opps[(unsigned char) '%'] = modulo;
+}
+
 int	main(int argc, char **argv)
 {
 	t_opptab	opps[128];
@@ -83,19 +92,21 @@ int	main(int argc, char **argv)
 
 	if (argc != 4)
 		return (1);
-	opps[(unsigned char) '+'] = add;
-	opps[(unsigned char) '-'] = minus;
-	opps[(unsigned char) '*'] = times;
-	opps[(unsigned char) '/'] = divide;
-	opps[(unsigned char) '%'] = modulo;
+	set_opps(opps);
 	if (opps[(unsigned char) argv[2][0]] && !argv[2][1])
 	{
 		nbb = ft_atoi(argv[3]);
 		res = opps[(unsigned char) argv[2][0]](ft_atoi(argv[1]), nbb);
-		if (nbb != 0 && (argv[2][0] != '/' || argv[2][0] != '%'))
-			ft_putnbr(res);
+		if ((argv[2][0] == '/' || argv[2][0] == '%') && nbb == 0)
+			return (0);
+		ft_putnbr(res);
 	}
 	else
-		write(1, "0", 1);
+	{
+		if (argv[2][1] != '\0')
+			return (0);
+		else
+			write(1, "0", 1);
+	}
 	return (0);
 }
