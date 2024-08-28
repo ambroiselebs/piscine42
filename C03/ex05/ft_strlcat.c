@@ -24,21 +24,36 @@ int	ft_strlen(char *str)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	d;
-	unsigned int	c;
+	unsigned int	dest_len;
 	unsigned int	src_len;
+	unsigned int	i;
 
-	d = ft_strlen(dest);
+	dest_len = ft_strlen(dest);
 	src_len = ft_strlen(src);
-	c = 0;
-	if (size <= src_len)
-		return (src_len + size);
-	while (src[c])
+	if (size <= dest_len)
+		return (size + src_len);
+	i = 0;
+	while (src[i] && (dest_len + i) < (size - 1))
 	{
-		dest[d] = src[c];
-		d++;
-		c++;
+		dest[dest_len + i] = src[i];
+		i++;
 	}
-	dest[d] = '\0';
-	return (d - src_len);
+	dest[dest_len + i] = '\0';
+	return (dest_len + src_len);
 }
+
+/*int	main(void)
+{
+	char dest[20] = "Hello";
+	char src[] = "World";
+	unsigned int size = 10;
+	unsigned int res;
+
+	printf("Avant ft_strlcat:\n");
+	printf("dest = '%s'\n\n", dest);
+	res = ft_strlcat(dest, src, size);
+	printf("Après ft_strlcat:\n");
+	printf("dest = '%s'\n\n", dest);
+	printf("longueur %u\n", res);
+	return (0);
+}*/

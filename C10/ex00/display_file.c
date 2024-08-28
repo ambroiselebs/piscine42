@@ -14,18 +14,37 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
+void	ft_putstr(char *str)
+{
+	while (*str)
+		write(1, str++, 1);
+}
+
 int	main(int argc, char **argv)
 {
-	char	data[1024];
-	ssize_t	bytes_read;
+	ssize_t	readed;
+	char	buffer[1024];
 	int		file;
 
-	file = open(argv[1], O_RDONLY);
-	bytes_read = read(file, data, 1024);
-	while (bytes_read > 0)
+	if (argc != 2)
 	{
-		write(STDOUT_FILENO, data, bytes_read);
-		bytes_read--;
+		if (argc < 2)
+			ft_putstr("File name missing.\n");
+		if (argc > 2)
+			ft_putstr("Too many arguments.\n");
+		return (0);
+	}
+	file = open(argv[1], O_RDONLY);
+	if (file == -1)
+	{
+		ft_putstr("Cannot read file.\n");
+		return (0);
+	}
+	readed = read(file, buffer, 1024);
+	while (readed > 0)
+	{
+		write(1, buffer, readed);
+		readed = read(file, buffer, 1024);
 	}
 	close(file);
 	return (0);

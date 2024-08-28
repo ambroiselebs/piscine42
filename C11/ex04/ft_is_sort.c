@@ -12,32 +12,41 @@
 
 #include <stdio.h>
 
-/* int	croissant(int a, int b)
-{
+/*int	compare(int a, int b) {
 	return (a - b);
-}
-int	decroissant(int a, int b)
-{
-	return (b - a);
-} */
+}*/
 
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	i;
+	int	ascending;
+	int	descending;
 
+	if (length <= 1)
+		return (1);
 	i = 0;
+	ascending = 1;
+	descending = 1;
 	while (i < length - 1)
 	{
 		if (f(tab[i], tab[i + 1]) < 0)
-			return (0);
+			descending = 0;
+		else if (f(tab[i], tab[i + 1]) > 0)
+			ascending = 0;
 		i++;
 	}
-	return (1);
+	if (ascending || descending)
+		return (1);
+	return (0);
 }
 
-/* int	main(void)
+/*int	main(void)
 {
-	int	tab[] = {1, 2, 12, 4, 5};
-	printf("%d", ft_is_sort(tab, 5, decroissant));
+	int	tab_croissant[5] = {1, 2, 3, 4, 5};
+	int	tab_decroissant[5] = {5, 4, 3, 2, 1};
+	int	tab_pastrie[5] = {5, 4, 12, 2, 1};
+	printf("%d\n", ft_is_sort(tab_croissant, 5, compare));
+	printf("%d\n", ft_is_sort(tab_decroissant, 5, compare));
+	printf("%d\n", ft_is_sort(tab_pastrie, 5, compare));
 	return (0);
-} */
+}*/
